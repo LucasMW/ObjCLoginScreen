@@ -36,11 +36,28 @@ int loginId;
 }
 
 
+
 void JSonTest (void)
 {
+    // Retrieve local JSON file called example.json
     NSData * JsonData=[[NSData alloc] init];
-    NSString* filePath;
-    NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+    NSString* filePath=@"login.json";
+    
+   
+    filePath = [[NSBundle mainBundle] pathForResource:@"login" ofType:@"json"];
+    // Load the file into an NSData object called JSONData
+
+    NSError *error = nil;
+    
+    NSData *JSONData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:&error];
+    
+     // Create an Objective-C object from JSON Data
+    id JSONObject = [NSJSONSerialization
+                     JSONObjectWithData:JSONData
+                     options:NSJSONReadingAllowFragments
+                     error:&error];
+    NSLog(@"%@", [[NSJSONSerialization JSONObjectWithData:JsonData options:kNilOptions error:&error] class]);
+
     
     
 }
@@ -50,7 +67,7 @@ NSArray* GetLoginNamesFromDB(void)
     NSString * data =@"Lucas;Lorenzo;lucas;lorenzo;natalia;Natalia;Lucena;eu;login";
     users = [data componentsSeparatedByString:@";"];
     
-    JSonTest();
+    //JSonTest();
     
     
     return users;
