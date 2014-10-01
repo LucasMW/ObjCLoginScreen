@@ -1,5 +1,13 @@
 {"Logins":[
     {"username":"lucas", "password":"1234"}, 
-    {"username":"brenno", "password":"xpto"},
+    {"username":"MED", "password":"DATA"},
+    {"username":"dev1", "password":"password1"},
+    {"username":"dev2", "password":"password2"},
+    {"username":"user1", "password":"acesso1"},
+    {"username":"user2", "password":"acesso2"},
+    {"username":"user3", "password":"acesso3"},
+    {"username":"userA", "password":"acessoA"},
+    {"username":"userB", "password":"acessoB"},
+    {"username":"master", "password":"senhadomaster"},
     {"username":"login", "password":"senha"}
 ]}
