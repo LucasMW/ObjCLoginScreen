@@ -37,30 +37,7 @@ int loginId;
 
 
 
-void JSonTest (void)
-{
-    // Retrieve local JSON file called example.json
-    NSData * JsonData=[[NSData alloc] init];
-    NSString* filePath=@"login.json";
-    
-   
-    filePath = [[NSBundle mainBundle] pathForResource:@"login" ofType:@"json"];
-    // Load the file into an NSData object called JSONData
 
-    NSError *error = nil;
-    
-    NSData *JSONData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:&error];
-    
-     // Create an Objective-C object from JSON Data
-    id JSONObject = [NSJSONSerialization
-                     JSONObjectWithData:JSONData
-                     options:NSJSONReadingAllowFragments
-                     error:&error];
-    NSLog(@"%@", [[NSJSONSerialization JSONObjectWithData:JsonData options:kNilOptions error:&error] class]);
-
-    
-    
-}
 NSArray* GetLoginNamesFromDB(void)
 {
     NSArray * users =[[NSArray alloc] init];
@@ -152,7 +129,12 @@ bool PasswordMatches (NSString* PassTxt)
      {
          NSLog(@"LOGIN DOES NOT EXIST");
          //[self performSegueWithIdentifier:@"PopupCalled" sender:sender];
-         
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Inexistente"
+                                                         message:@"O nome de usuario escolhido nao existe na base de dados"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"Fechar"
+                                               otherButtonTitles:nil];
+         [alert show];
          
      }
      else
@@ -165,6 +147,13 @@ bool PasswordMatches (NSString* PassTxt)
         else
         {
             NSLog(@"PASSWORD INCORRECT");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Senha Incorreta"
+                                                            message:@"A senha informada nao corresponde a senha deste usuario"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Fechar"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
         }
      }
     
